@@ -1,3 +1,10 @@
+.search{
+    position: relative;
+    display: inline-block;
+    margin: auto;
+    width: 300px;
+    background-color: white;
+};
 .container{
     position: relative;
     /* display: block; */
@@ -5,8 +12,8 @@
     /* padding: 20px; */
     width: 90%;
     margin: auto;
-    /* border: solid 1px #262B80; */
-}
+    border: solid 1px #262B80;
+};
 .row{
     position: relative;
-}
+};

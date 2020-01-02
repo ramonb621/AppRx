@@ -1,25 +1,14 @@
 import React from "react";
+import "./style.css";
 
 export function Input(props) {
     return(
         <div className="form-group">
             <input className="search" {...props} />
+              <button {...props} onClick={props.handleFormSubmit} className="search-btn">
+                SUBMIT
+              </button>
         </div>
     );
-}
 
-export function Text(props) {
-    return (
-      <div className="form-group">
-        <textarea className="search" rows="1" {...props} />
-      </div>
-    );
-}
-
-export function FormBtn(props) {
-    return (
-      <button {...props} style={{ float: "right", marginBottom: 10 }} className="search-btn">
-        {props.children}
-      </button>
-    );
-}
+};

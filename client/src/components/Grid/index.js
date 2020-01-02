@@ -1,7 +1,8 @@
 import React from "react";
+import "./style.css"
 
-export function Container() {
-    return <div className="container"></div>
+export function Container({children}) {
+    return <div className="container">{children}</div>
 };
 
 export function Row() {

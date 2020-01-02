@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Title from "../components/Title";
 import { Container, Row, Col } from "../components/Grid";
 // import { Link } from "react-router-dom";
-import { Input, Text, FormBtn } from "../components/Search";
-
+import { Input } from "../components/Search";
+import API from "../utils/API";
 class Home extends Component {
     state = {
         medications: [],
@@ -19,6 +19,18 @@ class Home extends Component {
         this.setState({
           [name]: value
         });
+    };
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+        console.log(this.state.query);
+        
+        API.getRx(this.state.query)
+        .then(res => {
+            console.log(res);
+            this.setState({ query: res.data })
+        })
+        .catch(err => console.error(err));
     };
 
     render() {

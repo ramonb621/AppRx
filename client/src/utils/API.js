@@ -4,7 +4,8 @@ export default {
     
     getRx: function (query) {
         console.log("this is working");
-        return axios.get("/api/search/meds", { params: { query: query } });
+        console.log("query\n", query)
+        return axios.get("/search/meds", { params: { query: query } });
     },
 
     // getRx: (med) =>

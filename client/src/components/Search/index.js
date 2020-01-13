@@ -5,10 +5,15 @@ export function Input(props) {
     return(
         <div className="form-group">
             <input className="search" {...props} />
-              <button {...props} onClick={props.handleFormSubmit} className="search-btn">
-                SUBMIT
-              </button>
         </div>
     );
 
+};
+
+export function Btn(props) {
+  return(
+    <button {...props} className="search-btn">
+     SEARCH
+    </button>
+  );
 };

@@ -11,6 +11,7 @@ function App() {
         <Title />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/search" component={Home} />
         </Switch>
       </div>
     </Router>

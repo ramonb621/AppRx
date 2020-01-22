@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row } from "../Grid";
 
 export function Meds({ children }) {
     return (
@@ -9,5 +10,20 @@ export function Meds({ children }) {
 }
 
 export function ListItem({ children }) {
-    return <li className="med">{children}</li>
+    return <p className="med">{children}</p>
 }
+
+// export function ListItem({
+//     description
+// }) {
+
+//     return (
+//         <li className="med-item">
+//             <Container>
+//                 <Row>
+//                     <p><strong>Description:</strong> {description} </p>
+//                 </Row>
+//             </Container>
+//         </li>
+//     )
+// }

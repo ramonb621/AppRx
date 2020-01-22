@@ -6,12 +6,14 @@ const axios = require("axios");
 //   .get(searchController.findAll)
 //   .post(saveController.create);
 
-router.get("/search/meds", (req, res) => {
-    console.log(req);
+router.get("/", (req, res) => {
+    const query = req.query;
+    // console.log({ params: req.query });
+    console.log(query)
     console.log("I'm reaching the back!");
-    axios.get("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + { params: { query: query } } + "&limit=5")
-    .then(({ data: { results } }) => res.json(results))
-    .then(res => console.log(res.data))
+    axios.get("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + query + "&limit=1")
+    .then(({ data: { results } }) => console.log(results).json(results))
+    // change console.log above to res.status(status)
     .catch(err => res.status(422).json(err));
 });
 

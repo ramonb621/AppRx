@@ -4,17 +4,17 @@ export default {
     
     getRx: function (query) {
         console.log("this is working");
-        console.log("query\n", query)
-        return axios.get("/search/meds", { params: { query: query } });
+        console.log("query: ", query)
+        return axios.get("/api/search", { params: { query: query } });
     },
 
-    // getRx: (med) =>
-    // fetch("/api/search/meds", + med, {
+    // getRx: (query) =>
+    // fetch("/api/search/meds", { params: { query: query } }, {
     // method: "GET",
     // headers: { "Content-Type": "application/json" },
-    // body: JSON.stringify(med)
-    // },console.log(med))
-    // .then(res => res.send(res))
+    // body: JSON.stringify({ params: { query: query } })
+    // })
+    // .then(res => res.json(res))
     // .catch(err => console.error(err)),
 
 }

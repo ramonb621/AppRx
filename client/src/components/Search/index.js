@@ -4,7 +4,7 @@ import "./style.css";
 export function Input(props) {
     return(
         <div className="form-group">
-            <input className="search" {...props} />
+            <input className="search" type="text" {...props} />
         </div>
     );
 

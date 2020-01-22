@@ -6,8 +6,9 @@ import { Meds, ListItem } from "../components/Meds";
 import API from "../utils/API";
 class Home extends Component {
     state = {
+        query: "",
         medications: [],
-        query: ""
+        loading: false
     };
 
     componentDidMount() {
@@ -21,17 +22,32 @@ class Home extends Component {
         });
     };
 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event) => {
         event.preventDefault();
+
+        this.setState({ loading: true });
         console.log(this.state.query);
-        
-        API.getRx({ query: this.state.query })
+
+        fetch("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + this.state.query + "&limit=1")
         .then(res => {
-            console.log(res);
-            console.log(this.state.query);
-            this.setState({ medications: res.data })
+            return res.json();
         })
-        .catch(err => console.error(err));
+        .then(results => {
+            this.setState({ medications: results })
+            console.log(this.state.medications)
+        })
+        // .then(res => this.props.history.push("/search"))
+
+        // API.getRx(this.state.query)
+        // .then(res => console.log(res))
+        // .then(results => {
+        //     console.log(results);
+        //     this.setState({ medications: results })
+        // })
+        // .then(console.log(this.state.medications))
+        .catch(err => {
+            this.setState({err})
+        });
     };
 
     render() {
@@ -39,19 +55,34 @@ class Home extends Component {
             <Container>
                 <form>
                     <Input value={this.state.query} onChange={this.handleInputChange} name="query" placeholder="Search Medication..." />
-                    <Btn onClick={this.handleFormSubmit} />
+                    <Btn onClick={this.handleFormSubmit} 
+                    />
                 </form>
-                {this.state.medications.length ? (
+                <h3>Results:</h3>
+                {!this.state.medications.length ? (
+                    <h3>No Results to Display</h3>
+                ) : (
+                    <Meds>
+                        {this.state.medications.map(meds => {
+                            return (
+                                <ListItem
+                                description={meds.results[0].description}
+                                />
+                            )
+                        })}
+                    </Meds>
+                )}
+                {/* {this.state.medications.length ? (
                     <Meds>
                         {this.state.medications.map(meds => (
-                            <ListItem>
-                                {meds.openfda.generic_name[0]}
-                            </ListItem>
+                            <ListItem
+                                name={meds.results[0].description[0]}
+                            />
                         ))}
                     </Meds>
                 ) : (
                     <h3> No Results to Display</h3>
-                )}
+                )} */}
             </Container>
         );
     }

@@ -17,4 +17,13 @@ export default {
     // .then(res => res.json(res))
     // .catch(err => console.error(err)),
 
+    // getRx: (query) =>
+    // fetch("/api/search/meds", query, {
+    // method: "GET",
+    // headers: { "Content-Type": "application/json" },
+    // body: JSON.stringify(query)
+    // })
+    // .then(res => res.json(res))
+    // .catch(err => console.error(err)),
+
 }

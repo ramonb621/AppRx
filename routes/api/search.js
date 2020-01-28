@@ -11,7 +11,7 @@ router.get("/", (req, res) => {
     // console.log({ params: req.query });
     console.log(query)
     console.log("I'm reaching the back!");
-    axios.get("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + query + "&limit=1")
+    axios.get("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + { params: req.query } + "&limit=1")
     .then(({ data: { results } }) => console.log(results).json(results))
     // change console.log above to res.status(status)
     .catch(err => res.status(422).json(err));

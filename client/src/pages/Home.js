@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Container } from "../components/Grid";
+import React, { Component, Fragment } from "react";
+import { Container, Col } from "../components/Grid";
 // import { Link } from "react-router-dom";
 import { Input, Btn } from "../components/Search";
 import { Meds, ListItem } from "../components/Meds";
@@ -14,6 +14,20 @@ class Home extends Component {
     componentDidMount() {
 
     }
+
+    // returnResults(){
+    //     return (
+    //         <Meds>
+    //             {this.state.medications.map((meds, i) => (
+    //                         <ListItem
+    //                         key={i}
+    //                         description={meds.results[i].description[i]}
+    //                         />
+    //                     ))}
+    //         </Meds>
+    //     )
+        
+    // }
 
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -33,8 +47,8 @@ class Home extends Component {
             return res.json();
         })
         .then(results => {
-            this.setState({ medications: results })
-            console.log(this.state.medications)
+            this.setState({ medications: [results] })
+            console.log(this.state)
         })
         // .then(res => this.props.history.push("/search"))
 
@@ -42,9 +56,8 @@ class Home extends Component {
         // .then(res => console.log(res))
         // .then(results => {
         //     console.log(results);
-        //     this.setState({ medications: results })
+        //     this.setState({ medications: results.data })
         // })
-        // .then(console.log(this.state.medications))
         .catch(err => {
             this.setState({err})
         });
@@ -58,31 +71,29 @@ class Home extends Component {
                     <Btn onClick={this.handleFormSubmit} 
                     />
                 </form>
-                <h3>Results:</h3>
+                <br/>
+                <div className="advisory">Advisory:
+                    <p className="adv-desc">Please do not rely on this information for medical advice.</p>
+                </div>
                 {!this.state.medications.length ? (
-                    <h3>No Results to Display</h3>
+                    console.log(this.state.medications),
+                    <h3 className="status">No Results to Display</h3>
                 ) : (
                     <Meds>
-                        {this.state.medications.map(meds => {
+                        {this.state.medications.map((meds, i) => {
+                            console.log(meds.results[i].description[i])
                             return (
+                            <Fragment>
                                 <ListItem
-                                description={meds.results[0].description}
-                                />
+                                key={meds[i]}
+                                >
+                                 {meds.results[i].description}
+                                </ListItem>
+                            </Fragment>
                             )
                         })}
                     </Meds>
-                )}
-                {/* {this.state.medications.length ? (
-                    <Meds>
-                        {this.state.medications.map(meds => (
-                            <ListItem
-                                name={meds.results[0].description[0]}
-                            />
-                        ))}
-                    </Meds>
-                ) : (
-                    <h3> No Results to Display</h3>
-                )} */}
+                     )}
             </Container>
         );
     }

@@ -1,19 +1,9 @@
-.search{
-    position: relative;
-    display: inline-block;
-    margin: auto;
-    width: 300px;
-    background-color: white;
-};
-.container{
-    position: relative;
-    /* display: block; */
-    height: auto;
-    /* padding: 20px; */
-    width: 90%;
-    margin: auto;
-    border: solid 1px #262B80;
-};
-.row{
-    position: relative;
-};
+.advisory {
+    margin: 0px auto 0px;
+}
+.adv-desc {
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+.saved-meds {
+}

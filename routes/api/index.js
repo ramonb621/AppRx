@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const searchRoutes = require("./search");
+const medsRoutes = require("./meds");
 
 // Saved routes
-router.use("/search", searchRoutes);
+router.use("/meds", medsRoutes);
 
 module.exports = router;

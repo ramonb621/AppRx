@@ -1,0 +1,31 @@
+.med {
+    background-color: white;
+    /* border-radius: 15px; */
+}
+.results {
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+.dosage, .side_effects, .contraindications {
+    padding: 10px;
+    margin-top: 0px;
+    text-align: left;
+    font-size: 12pt;
+}
+#dosage, #side_effects, #contraindications {
+    font-weight: bold;
+}
+.notes{
+    width: 530px;
+    height: 120px;
+    border-radius: 15px;
+    text-indent: 5px;
+    padding: 2px;
+}
+.medication, .prescribed_by, .frequency {
+    position: relative;
+    display: inline-block;
+    width: 172.6px;
+    border-radius: 15px;
+    text-indent: 5px;
+}

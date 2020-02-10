@@ -10,3 +10,11 @@
 .row{
     position: relative;
 }
+.link {
+    float: left;
+    text-decoration: none;
+    color: black;
+}
+.link:hover {
+    color: red;
+}

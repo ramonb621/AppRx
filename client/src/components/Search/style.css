@@ -4,6 +4,8 @@
     margin: auto;
     width: 300px;
     background-color: white;
+    border-radius: 15px;
+    text-indent: 5px;
 }
 .search-btn{
     position: relative;

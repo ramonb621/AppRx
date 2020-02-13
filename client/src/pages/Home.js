@@ -3,6 +3,7 @@ import { Container, Col, Row } from "../components/Grid";
 import { Link, Redirect } from "react-router-dom";
 import { Input, Btn, Text } from "../components/Search";
 import { Meds, ListItem, Save } from "../components/Meds";
+import Oops from "./Oops";
 import API from "../utils/API";
 import "./Home.css"
 class Home extends Component {
@@ -91,12 +92,14 @@ class Home extends Component {
                             // console.log(meds.results[i].set_id.toString())
                             return (
                             <Fragment>
-                                <ListItem
-                                key={`DrugId-${this.state.query}`}                                
-                                dosage={undefined ? "N/A" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}
-                                side_effects={undefined ? "N/A" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}
-                                contraindications={undefined ? "N/A" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}
-                                />
+                                <Oops>
+                                    <ListItem
+                                    key={`DrugId-${this.state.query}`}                                
+                                    dosage={undefined ? "N/A" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}
+                                    side_effects={meds.results[i].adverse_reactions === undefined ? "N/A" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}
+                                    contraindications={meds.results[i].contraindications === undefined ? "N/A" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}
+                                    />
+                                </Oops>
                             </Fragment>
                             )
                         })}

@@ -1,12 +1,25 @@
 .db-med {
     font-weight: bold;
-    line-height: 5px;
     text-align: left;
+    margin: 5px 10px 5px;
 }
 .db-res {
     font-weight: normal;
 }
 .saved-meds {
-    padding: 5px;
+    padding: 5px 5px 5px 0px;
     background-color: white;
+}
+.med-list-cont {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+}
+.link {
+    margin-top: 40px;
+}
+@media screen and (max-width: 720px) {
+    .med-list-cont {
+        width: 90%;
+    }
 }

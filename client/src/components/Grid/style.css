@@ -14,8 +14,9 @@
     float: left;
     text-decoration: none;
     color: black;
+    font-weight: bold;
     margin-left: 10%;
 }
 .link:hover {
-    color: red;
+    color: white;
 }

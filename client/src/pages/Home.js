@@ -3,7 +3,6 @@ import { Container, Col, Row } from "../components/Grid";
 import { Link, Redirect } from "react-router-dom";
 import { Input, Btn, Text } from "../components/Search";
 import { Meds, ListItem, Save } from "../components/Meds";
-import Oops from "./Oops";
 import API from "../utils/API";
 import "./Home.css"
 class Home extends Component {
@@ -29,11 +28,12 @@ class Home extends Component {
         });
     };
 
+
+// Fetch call to OpenFDA API, sets results as state for medications array
     handleFormSubmit = (event) => {
         event.preventDefault();
 
         this.setState({ loading: true });
-        console.log(this.state.query);
 
         fetch("https://api.fda.gov/drug/label.json?search=dosage_and_administration:" + this.state.query + "&limit=1")
         .then(res => {
@@ -41,19 +41,21 @@ class Home extends Component {
         })
         .then(results => {
             this.setState({ medications: [results], query: "" })
-            console.log(this.state.medications)
+            // console.log(this.state.medications)
         })
         .catch(err => {
             this.setState({err})
         });
+
     };
 
+// Gathers data from Mongoose database and sets response as the state for log array
     loadMeds = () => {
         this.setState({ loading: true })
         API.getMeds()
         .then(res => 
             this.setState({ log: res.data, medication: "", prescribed_by: "", frequency: "", notes: "" }),
-            console.log(this.state.log)
+            // console.log(this.state.log)
             )
             .catch(err => console.log(err));
     }
@@ -69,6 +71,7 @@ class Home extends Component {
         })
         .then(res => this.loadMeds())
         .catch(err => console.log(err));
+
     }
     
     render() {
@@ -84,22 +87,19 @@ class Home extends Component {
                     <p className="adv-desc">Please <strong>DO NOT</strong> rely on this information for medical advice.</p>
                 </div>
                 {!this.state.medications.length ? (
-                    console.log(this.state.medications),
+                    // console.log(this.state.medications),
                     <h3 className="status">No Results to Display</h3>
                 ) : (
                     <Meds>
                         {this.state.medications.map((meds, i) => {
-                            // console.log(meds.results[i].set_id.toString())
                             return (
                             <Fragment>
-                                <Oops>
-                                    <ListItem
-                                    key={`DrugId-${this.state.query}`}                                
-                                    dosage={undefined ? "N/A" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}
-                                    side_effects={meds.results[i].adverse_reactions === undefined ? "N/A" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}
-                                    contraindications={meds.results[i].contraindications === undefined ? "N/A" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}
-                                    />
-                                </Oops>
+                                <ListItem
+                                key={`DrugId-${this.state.query}`}                                
+                                dosage={meds.results[i].dosage_and_administration === undefined ? "No results to display" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}
+                                side_effects={meds.results[i].adverse_reactions === undefined ? "No results to display" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}
+                                contraindications={meds.results[i].contraindications === undefined ? "No results to display" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}
+                                />
                             </Fragment>
                             )
                         })}
@@ -127,7 +127,7 @@ class Home extends Component {
                         </Col>
                     </Meds>
                      )}
-                     <Link className="link" to="/meds/:id">SAVED</Link>
+                     <Link className="link" to="/meds/:id">SAVED MEDS</Link>
             </Container>
         );
     }

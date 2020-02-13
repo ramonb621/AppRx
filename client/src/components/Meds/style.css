@@ -15,8 +15,9 @@
 #dosage, #side_effects, #contraindications {
     font-weight: bold;
 }
-.notes{
+.notes {
     width: 530px;
+    /* width: 90%; */
     height: 120px;
     border-radius: 15px;
     text-indent: 5px;
@@ -25,7 +26,19 @@
 .medication, .prescribed_by, .frequency {
     position: relative;
     display: inline-block;
-    width: 172.6px;
+    margin: 0px 1px;
+    width: 171.6px;
+    /* width: 29.2%; */
     border-radius: 15px;
     text-indent: 5px;
+}
+@media screen and (max-width: 530px) {
+    .notes {
+        width: 90%;
+    }
+    .medication, .prescribed_by, .frequency {
+        width: 29%;
+        margin: 0px 1px;
+    }
+    
 }

@@ -3,7 +3,7 @@ import "./style.css";
 
 function Title() {
   return (
-    <h1 className="title">App Rx</h1>
+    <h1 className="title">AppRx</h1>
   );
 }
 

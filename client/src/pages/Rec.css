@@ -12,7 +12,8 @@
 }
 .med-list-cont {
     position: relative;
-    display: inline-block;
+    display: block;
+    margin: auto;
     width: 50%;
 }
 .link {

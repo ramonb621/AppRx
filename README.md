@@ -8,10 +8,11 @@ This application allows you lookup the dosage and administration, side effects, 
 The running app is deployed on Heroku but try it out [AppRx](https://apprx.herokuapp.com/)
 
 ## Built with:
-React.js
-JavaScript
-Node.js
-Express
-Mongoose
-HTML
-CSS
+* React.js
+* JavaScript
+* Node.js
+* Express
+* Mongoose
+* HTML
+* CSS
+* OpenFDA API

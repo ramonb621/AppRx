@@ -13,10 +13,15 @@
 .link {
     float: left;
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
     margin-left: 10%;
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
 }
 .link:hover {
-    color: white;
+    color: #00477D;
 }

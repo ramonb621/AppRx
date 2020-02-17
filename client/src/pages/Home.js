@@ -115,7 +115,7 @@ class Home extends Component {
                                 <Row>
                                     {this.state.log.map(rec => (
                                         <Meds key={rec._id}>
-                                            <Link to={"/meds/" + rec._id}>
+                                            <Link className="redirect" to={"/meds/" + rec._id}>
                                                 {rec.medication}
                                             </Link>
                                         </Meds>

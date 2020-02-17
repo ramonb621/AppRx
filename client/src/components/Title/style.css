@@ -7,4 +7,9 @@
     margin-top: 0;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-  }
+    text-shadow:
+      -1px -1px 0 black,
+      1px -1px 0 black,
+      -1px 1px 0 black,
+      1px 1px 0 black;
+}

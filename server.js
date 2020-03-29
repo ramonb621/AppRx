@@ -8,7 +8,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 
-const MONGOD_URI = process.env.MONGOD_URI || 'mongodb://localhost/apprx';
+const MONGOD_URI = process.env.MONGOD_URI || 'mongodb://apprx:apprxdrugs1@ds153775.mlab.com:53775/heroku_w2cm2s4j';
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));

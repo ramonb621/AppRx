@@ -9,7 +9,7 @@ require("dotenv")
 
 const PORT = process.env.PORT || 3001;
 
-const MONGOD_URI = `mongodb://${USERNAME}:${PASSWORD}@ds153775.mlab.com:53775/heroku_w2cm2s4j`;
+const MONGOD_URI = `mongodb://${process.env.USERNAME}:${process.env.PASSWORD}@ds153775.mlab.com:53775/heroku_w2cm2s4j`;
 
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));

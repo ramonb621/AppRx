@@ -15,6 +15,10 @@
         typing 3.5s steps(40, end),
         blink-caret .75s step-end infinite;
 }
+.far {
+    float: right;
+    margin-right: 4%;
+}
 .redirect {
     text-decoration: none;
     color: black;

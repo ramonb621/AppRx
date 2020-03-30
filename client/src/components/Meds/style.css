@@ -1,34 +1,39 @@
 .med {
     background-color: white;
-    /* border-radius: 15px; */
+    margin: 15px;
 }
 .results {
     padding-top: 10px;
     margin-bottom: 0px;
 }
 .dosage, .side_effects, .contraindications {
-    padding: 10px;
-    margin-top: 0px;
+    padding: 10px 0px 10px;
     text-align: left;
+    text-indent: 1rem;
     font-size: 12pt;
+    font-weight: bold;
+    background-color: white;
 }
 #dosage, #side_effects, #contraindications {
-    font-weight: bold;
+    font-weight: normal;
+    text-indent: 0rem;
+    margin: 10px 5px;
+    padding: 10px 10px 0px;
+    border-top: 1px solid black;
 }
 .notes {
-    width: 90%;
-    /* width: 90%; */
+    width: 92%;
     height: 120px;
     border-radius: 15px;
-    text-indent: 5px;
+    line-height: 1.5rem;
+    text-indent: 10px;
     padding: 2px;
 }
 .medication, .prescribed_by, .frequency {
     position: relative;
     display: inline-block;
     margin: 0px 1px;
-    width: 29%;
-    /* width: 29.2%; */
+    width: 29.2%;
     border-radius: 15px;
     text-indent: 5px;
 }

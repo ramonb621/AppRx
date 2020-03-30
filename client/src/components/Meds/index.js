@@ -6,19 +6,14 @@ export function Meds({ children }) {
     return <div className="med-list-cont">{children}</div>
 }
 
-export function ListItem({ dosage, side_effects, contraindications, children }) {
+export function ListItem({ children }) {
     return (
         <Container>
             <div className="med"> 
                 <Col>
                     <Row>
-                        <h3 className="results">RESULTS:</h3>
-                        <p className="dosage"><span id="dosage">DESCRIPTION: </span>{dosage}</p>
-                        <p className="side_effects"><span id="side_effects">SIDE EFFECTS: </span>{side_effects}</p>
-                        <p className="contraindications"><span id="contraindications">CONTRAINDICATIONS: </span>{contraindications}</p>
-                        <div>
-                            {children}
-                        </div>
+                        {/* <h3 className="results">RESULTS:</h3> */}
+                        {children}
                     </Row>
                 </Col>
             </div>

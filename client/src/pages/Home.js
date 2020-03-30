@@ -14,7 +14,10 @@ class Home extends Component {
         notes: "",
         medications: [],
         log: [],
-        loading: false
+        loading: false,
+        open: false,
+        open2: false,
+        open3: false
     };
 
     componentDidMount() {
@@ -27,7 +30,6 @@ class Home extends Component {
           [name]: value
         });
     };
-
 
 // Fetch call to OpenFDA API, sets results as state for medications array
     handleFormSubmit = (event) => {
@@ -73,7 +75,19 @@ class Home extends Component {
         .catch(err => console.log(err));
 
     }
-    
+
+    togglePanel = () => {
+        this.setState({ open: !this.state.open })
+    }
+
+    togglePanel2 = () => {
+        this.setState({ open2: !this.state.open2 })
+    }
+
+    togglePanel3 = () => {
+        this.setState({ open3: !this.state.open3 })
+    }
+
     render() {
         return (
             <Container>
@@ -94,17 +108,27 @@ class Home extends Component {
                         {this.state.medications.map((meds, i) => {
                             return (
                             <Fragment>
-                                <ListItem
-                                key={`DrugId-${this.state.query}`}                                
-                                dosage={meds.results[i].dosage_and_administration === undefined ? "No results to display" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}
-                                side_effects={meds.results[i].adverse_reactions === undefined ? "No results to display" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}
-                                contraindications={meds.results[i].contraindications === undefined ? "No results to display" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}
-                                />
+                                <h3 className="results">RESULTS:</h3>
+                                <ListItem>
+                                    <div className="dosage" onClick={() => this.togglePanel()}>DOSAGE: <i class="far fa-caret-square-down"></i>
+                                        {this.state.open ? (<div id="dosage">{meds.results[i].dosage_and_administration === undefined ? "No results to display" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}</div>) : null}
+                                    </div>
+                                </ListItem>
+                                <ListItem>
+                                    <div className="side_effects" onClick={() => this.togglePanel2()}>SIDE EFFECTS: <i class="far fa-caret-square-down"></i>
+                                        {this.state.open2 ? (<div id="side_effects">{meds.results[i].adverse_reactions === undefined ? "No results to display" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}</div>) : null}
+                                    </div>
+                                </ListItem>
+                                <ListItem>
+                                    <div className="contraindications" onClick={() => this.togglePanel3()}>CONTRAINDICATIONS: <i class="far fa-caret-square-down"></i>
+                                        {this.state.open3 ? (<div id="contraindications">{meds.results[i].contraindications === undefined ? "No results to display" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}</div>) : null}
+                                    </div>
+                                </ListItem>
                             </Fragment>
                             )
                         })}
                         <form>
-                            <Input className="medication" value={this.state.medication} onChange={this.handleInputChange} name="medication" placeholder="Medication Name..." />
+                            <Input className="medication" value={this.state.medication} onChange={this.handleInputChange} name="medication" placeholder="Rx Name..." />
                             <Input className="prescribed_by" value={this.state.prescribed_by} onChange={this.handleInputChange} name="prescribed_by" placeholder="Prescribed By..." />
                             <Input className="frequency" value={this.state.frequency} onChange={this.handleInputChange} name="frequency" placeholder="Frequency..." />
                             <Text className="notes" value={this.state.notes} onChange={this.handleInputChange} name="notes" placeholder="Notes..." />

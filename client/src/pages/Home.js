@@ -110,17 +110,17 @@ class Home extends Component {
                             <Fragment>
                                 <h3 className="results">RESULTS:</h3>
                                 <ListItem>
-                                    <div className="dosage" onClick={() => this.togglePanel()}>DOSAGE: <i class="far fa-caret-square-down"></i>
+                                    <div className="dosage" onClick={() => this.togglePanel()}>DOSAGE: <i className="far fa-caret-square-down"></i>
                                         {this.state.open ? (<div id="dosage">{meds.results[i].dosage_and_administration === undefined ? "No results to display" : meds.results[i].dosage_and_administration[i].split("DOSAGE AND ADMINISTRATION")}</div>) : null}
                                     </div>
                                 </ListItem>
                                 <ListItem>
-                                    <div className="side_effects" onClick={() => this.togglePanel2()}>SIDE EFFECTS: <i class="far fa-caret-square-down"></i>
+                                    <div className="side_effects" onClick={() => this.togglePanel2()}>SIDE EFFECTS: <i className="far fa-caret-square-down"></i>
                                         {this.state.open2 ? (<div id="side_effects">{meds.results[i].adverse_reactions === undefined ? "No results to display" : meds.results[i].adverse_reactions[i].split("ADVERSE REACTIONS")}</div>) : null}
                                     </div>
                                 </ListItem>
                                 <ListItem>
-                                    <div className="contraindications" onClick={() => this.togglePanel3()}>CONTRAINDICATIONS: <i class="far fa-caret-square-down"></i>
+                                    <div className="contraindications" onClick={() => this.togglePanel3()}>CONTRAINDICATIONS: <i className="far fa-caret-square-down"></i>
                                         {this.state.open3 ? (<div id="contraindications">{meds.results[i].contraindications === undefined ? "No results to display" : meds.results[i].contraindications[i].split("CONTRAINDICATIONS")}</div>) : null}
                                     </div>
                                 </ListItem>
